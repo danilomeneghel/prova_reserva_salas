@@ -1,0 +1,7 @@
+{
+    "require": {
+        "wbraganca/yii2-dynamicform": "dev-master",
+        "yiisoft/yii2-jui": "^2.0",
+        "kartik-v/yii2-date-range": "*"
+    }
+}

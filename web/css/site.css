@@ -1,0 +1,369 @@
+html,
+body {
+    height: 100%;
+}
+
+h1 {
+    color: #3566AD !important;
+    font-size: 30px;
+    padding-bottom: 8px;
+}
+
+h4 {
+    margin: 2px 0px !important;
+}
+
+.wrap {
+    min-height: 122px;
+    //margin: 0 auto -60px;
+    //padding: 0 0 95px 130px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+.navbar {
+    background-color: #3EC1CC !important;
+    margin: 0px !important;
+    min-height: 40px !important;
+}
+
+.navbar ul li a:hover, .navbar ul li a:visited {
+    background-color: #3AA8AF !important;
+}
+
+.navbar-nav {
+    background-color: #3EC1CC !important;
+}
+
+.navbar-nav a {
+    color: #FFF !important;
+    font-weight: bold;
+}
+
+.navbar-nav > li > a {
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+}
+
+.navbar-toggle {
+    float: left !important;
+    margin-left: 9% !important;
+}
+
+.top {
+    margin-top: 0px;
+    height: 90px;
+    background-color: #3566AD;
+    left: 0px;
+    position: fixed;
+    z-index: 1100;
+    width: 100%;
+}
+
+.top-margem {
+    height: 80px;
+    clear: both;
+}
+
+.top-logo {
+    float: left;
+    margin: 25px 0px 0px 10%;
+}
+
+.top-usuario {
+    float: right;
+    margin-right: 9%;
+    text-align: right;
+    color: #ffffff;
+    height: 80px;
+    padding-top: 48px;
+}
+
+.filtro {
+    border-bottom: 1px solid #ddd; 
+    background-color: #F5F5F5;
+    padding: 6px 0px;
+    height: 46px; 
+    display: block;
+}
+
+.filtro .filtro-margem {
+    margin: 0% 9% 0% 9%;
+}
+
+.filtro .filtro-botao {
+    float: left; 
+    width: 30%;
+}
+
+.filtro .filtro-texto {
+    float: left; 
+    width: 70%; 
+    text-align: right; 
+    color: #3566AD; 
+    font-weight: bold; 
+    padding-top: 8px;
+}
+
+#login-form .col-lg-1 {
+    width: 22% !important;
+}
+
+#login-form .col-lg-3 {
+    min-width: 78% !important;
+}
+
+#login-form .col-lg-8 {
+    clear: both !important;
+    width: 100% !important;
+}
+
+#login-form .form-group {
+    margin-bottom: 0px !important;
+}
+
+#login-form .form-control {
+    margin: 0px 20px 0px 0px !important;
+}
+
+#login-form .col-lg-offset-1 {
+    margin-left: 0px !important;
+}
+
+#login-form .btn {
+    width: 100% !important;
+}
+
+.navbar-collapse {
+    padding-right: 0px !important;
+}
+
+.titulo-sistema {
+    font-family: 'StagSansRound-Bold';
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8%;
+}
+
+.titulo-login {
+    colot: #000000;
+    font-size: 18px;
+    text-align: center;    
+    margin-bottom: 8%;
+}
+
+.slogan-sistema {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 8%;
+    text-align: center;
+}
+
+.bg-login {
+    background: #3566AD; 
+    position: absolute; 
+    width:100%;
+}
+
+.login {
+    width: 75% !important;
+    margin: auto auto !important;
+    height: 100%;
+}
+
+.login-box {
+    display: block;
+    margin: 14% auto !important;
+    width: 350px !important;
+}
+
+.login-img {
+    float: left; 
+    width: 33%; 
+    margin-top: 23%;
+}
+
+.login-box-form {
+    float: left;
+    background-color: #F5F7FA; 
+    border: 1px solid #9C9C9C; 
+    border-radius: 6px; 
+    padding: 25px;
+}
+
+@-moz-document url-prefix() { 
+    .login-box-form {
+        min-width: 100%;
+    }
+}
+
+label {
+    font-weight: normal !important;
+}
+
+.margem-painel-chart {
+    margin-top: 15px;
+}
+
+.margem-painel-chart .panel-body {
+    padding-top: 2px !important;
+}
+
+.panel-chart {
+    border-color: #ddd;
+}
+
+.panel-chart > .panel-heading {
+    color: #3566AD !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+.painel-chart-view {
+    float: left;
+    width: 50%;
+    display: block;
+}
+
+.chart {
+    min-height: 95px;
+    min-width: 190px;
+    margin-left: -30px;
+}
+
+.painel-chart-texto {
+    float: left; 
+    width: 50%; 
+    color: #3566AD; 
+    font-weight: bold;
+    display: block;
+}
+
+.painel-chart-texto div {
+    margin-bottom: 15px;
+}
+
+.tab1 a, .tab1 a:hover, .tab1 a:visited {
+    background-color: #6CCEF5 !important;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tab2 a, .tab2 a:hover, .tab2 a:visited {
+    background-color: #5DAEE0 !important;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tab3 a, .tab3 a:hover, .tab3 a:visited {
+    background-color: #4F93CF !important;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-content #tab1 {
+    background-color: #6CCEF5;
+    padding: 20px 16px !important;    
+}
+
+.tab-content #tab2 {
+    background-color: #5DAEE0;
+    padding: 20px 16px !important;    
+}
+
+.tab-content #tab3 {
+    background-color: #4F93CF;
+    padding: 20px 16px !important;    
+}
+
+.nav > li > a {
+    padding: 10px !important;
+}
