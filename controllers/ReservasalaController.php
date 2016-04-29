@@ -89,13 +89,34 @@ class ReservasalaController extends Controller
     public function actionCreate()
     {
         $model = new Reservasala();
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->save();
-            return $this->redirect(['view', 'idReservaSala' => $model->idReservaSala, 'idUsuario' => $model->idUsuario, 'idSala' => $model->idSala]);
+        $data = Yii::$app->request->post();
+        $find = "";
+        
+        if(!empty($data)) {
+            $usuario = $data['Reservasala']['idUsuario'];
+            $sala = $data['Reservasala']['idSala'];
+            $periodo = $data['Reservasala']['periodo'];
+                        
+            $periodoDecresc = date("Y-m-d H:i:s", strtotime('-1 hours', strtotime($periodo)));
+            $periodoAcresc = date("Y-m-d H:i:s", strtotime('+1 hours', strtotime($periodo)));
+                        
+            $find = Reservasala::find()->where('idSala = ' . $sala . ' AND periodo BETWEEN "' . $periodoDecresc . '" AND "' . $periodoAcresc . '"')->one();
+        }
+        
+        if (empty($find)) {
+            if ($model->load($data)) {
+                $model->save();
+                return $this->redirect(['view', 'idReservaSala' => $model->idReservaSala, 'idUsuario' => $model->idUsuario, 'idSala' => $model->idSala]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                    'error' => ''
+                ]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'error' => 'Sala já reservada para esse periodo'
             ]);
         }
     }
@@ -115,7 +136,7 @@ class ReservasalaController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->save();
             
-            return $this->redirect(['view', 'idReservaSala' => $model->idReservaSala, 'idUsuario' => $model->idUsuario]);
+            return $this->redirect(['view', 'idReservaSala' => $model->idReservaSala, 'idUsuario' => $model->idUsuario, 'idSala' => $model->idSala]);
         } else {
             return $this->render('update', [
                 'model' => $model,

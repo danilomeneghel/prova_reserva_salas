@@ -14,6 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <?php 
+        if(!empty($error)) { 
+            echo '<div class="alert alert-danger">' . $error . '</div>';
+        } 
+    ?>
+    
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

@@ -18,7 +18,8 @@ class ReservasalaBusca extends Reservasala
     public function rules()
     {
         return [
-            [['idReservaSala', 'periodo', 'duracao'], 'integer'],
+            [['idReservaSala', 'idUsuario', 'idSala'], 'integer'],
+            [['periodo', 'duracao'], 'string'],
             [['idUsuario', 'idSala'], 'safe'],
         ];
     }
@@ -63,8 +64,8 @@ class ReservasalaBusca extends Reservasala
 
         $query->andFilterWhere(['like', 'periodo', $this->periodo])
               ->andFilterWhere(['like', 'duracao', $this->duracao])
-              ->andFilterWhere(['like', 'usuario.nome', $this->idUsuario])
-              ->andFilterWhere(['=', 'sala.nro_sala', $this->idSala]);
+              ->andFilterWhere(['like', 'usuario.nome', $this->idUsuario]);
+              //->andFilterWhere(['=', 'sala.nro_sala', $this->idSala]);
 
         return $dataProvider;
     }
