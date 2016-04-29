@@ -27,12 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'idUsuario',
-                'value' => 'usuario'
+                'value' => 'usuario.nome'
             ],
             [
                 'attribute' => 'idSala',
-                'value' => 'nro_sala'
+                'value' => 'sala.nro_sala'
             ],
+            'periodo',
+            'duracao',
             
             ['class' => 'yii\grid\ActionColumn'],
         ],

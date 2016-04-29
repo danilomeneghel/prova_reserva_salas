@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 29-Abr-2016 às 01:00
+-- Data de Criação: 29-Abr-2016 às 08:04
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de Dados: `reserva_salas`
+-- Base de Dados: `prova_reserva_salas`
 --
-CREATE DATABASE IF NOT EXISTS `reserva_salas` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `reserva_salas`;
+CREATE DATABASE IF NOT EXISTS `prova_reserva_salas` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `prova_reserva_salas`;
 
 -- --------------------------------------------------------
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `rs_login` (
   `ativo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idLogin`,`idUsuario`),
   KEY `fk_rs_login_rs_usuario1_idx` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `rs_login`
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `rs_login_acesso` (
   PRIMARY KEY (`idLoginAcesso`,`idUsuario`,`idLogin`),
   KEY `fk_rs_login_acesso_rs_login1_idx` (`idLogin`,`idUsuario`),
   KEY `idUsuario` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Extraindo dados da tabela `rs_login_acesso`
@@ -80,7 +80,9 @@ INSERT INTO `rs_login_acesso` (`idLoginAcesso`, `idUsuario`, `idLogin`, `data`) 
 (9, 1, 1, '2016-04-28 20:52:34'),
 (10, 2, 2, '2016-04-28 21:52:09'),
 (11, 1, 1, '2016-04-28 21:54:25'),
-(12, 3, 3, '2016-04-28 21:56:50');
+(12, 3, 3, '2016-04-28 21:56:50'),
+(13, 1, 1, '2016-04-29 00:14:56'),
+(14, 1, 1, '2016-04-29 00:24:00');
 
 -- --------------------------------------------------------
 
@@ -94,10 +96,20 @@ CREATE TABLE IF NOT EXISTS `rs_reserva_sala` (
   `idSala` int(11) NOT NULL,
   `periodo` datetime NOT NULL,
   `duracao` time DEFAULT NULL,
-  PRIMARY KEY (`idReservaSala`),
-  KEY `idUsuario` (`idUsuario`,`idSala`),
+  PRIMARY KEY (`idReservaSala`,`idUsuario`,`idSala`),
+  KEY `idUsuario` (`idUsuario`),
   KEY `idSala` (`idSala`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Extraindo dados da tabela `rs_reserva_sala`
+--
+
+INSERT INTO `rs_reserva_sala` (`idReservaSala`, `idUsuario`, `idSala`, `periodo`, `duracao`) VALUES
+(3, 1, 5, '2017-01-02 08:00:00', '01:00:00'),
+(4, 1, 1, '2017-01-03 15:00:00', '01:00:00'),
+(5, 3, 1, '2016-08-10 16:00:00', '01:00:00'),
+(6, 1, 1, '2016-08-11 11:00:00', '01:00:00');
 
 -- --------------------------------------------------------
 
@@ -112,7 +124,15 @@ CREATE TABLE IF NOT EXISTS `rs_sala` (
   `ativo` tinyint(1) DEFAULT NULL,
   `dataCriacao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idSala`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Extraindo dados da tabela `rs_sala`
+--
+
+INSERT INTO `rs_sala` (`idSala`, `nro_sala`, `tipo`, `ativo`, `dataCriacao`) VALUES
+(1, 100, 0, 1, '2016-04-28 23:12:14'),
+(5, 106, 1, 1, '2016-04-28 23:50:25');
 
 -- --------------------------------------------------------
 
@@ -129,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `rs_usuario` (
   `ativo` tinyint(1) DEFAULT NULL,
   `dataCriacao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `rs_usuario`
@@ -152,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `rs_usuario_email` (
   `email` varchar(45) NOT NULL,
   PRIMARY KEY (`idUsuarioEmail`,`idUsuario`),
   KEY `fk_rs_usuario_email_rs_usuario1_idx` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `rs_usuario_email`
@@ -186,8 +206,8 @@ ALTER TABLE `rs_login_acesso`
 -- Limitadores para a tabela `rs_reserva_sala`
 --
 ALTER TABLE `rs_reserva_sala`
-  ADD CONSTRAINT `rs_reserva_sala_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `rs_usuario` (`idUsuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `rs_reserva_sala_ibfk_2` FOREIGN KEY (`idSala`) REFERENCES `rs_sala` (`idSala`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `rs_reserva_sala_ibfk_2` FOREIGN KEY (`idSala`) REFERENCES `rs_sala` (`idSala`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `rs_reserva_sala_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `rs_usuario` (`idUsuario`) ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `rs_usuario_email`

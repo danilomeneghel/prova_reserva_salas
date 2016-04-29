@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Usuario;
 use app\models\Sala;
+//use kartik\datecontrol\Module;
+//use kartik\datecontrol\DateControl;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\ReservaSala */
@@ -33,13 +35,23 @@ use app\models\Sala;
                 
                 <div class="row">
                     <div class="col-sm-4">
-                        <?= $form->field($model, 'periodo')->textInput(['maxlength' => true]) ?>
+                        <?php 
+                            echo $form->field($model, 'periodo')->textInput(['maxlength' => true]);
+                            echo " (yyyy-mm-dd H:i:s)";
+                        ?>
+                        <?php 
+                        /*echo $form->field($model, 'periodo')->widget(DateControl::classname(), [
+                            'type'=>DateControl::FORMAT_DATETIME
+                        ]);*/
+                        ?>
                     </div>
                 </div>
-
+                
+                <div class="row">&nbsp;</div>
+            
                 <div class="row">
                     <div class="col-sm-4">
-                        <?= $form->field($model, 'duracao')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'duracao')->textInput(['readonly' => true, 'value' => '1:00']) ?>
                     </div>
                 </div>
     
