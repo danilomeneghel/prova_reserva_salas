@@ -46,7 +46,7 @@ class ReservasalaController extends Controller
             ],
         ];
     }
-    
+
     /**
      * Lists all Reservasala models.
      * @return mixed
@@ -73,7 +73,7 @@ class ReservasalaController extends Controller
     {
         $reservaSala = new Reservasala();
         $model = $this->findModel($idReservaSala, $idUsuario, $idSala);
-        
+
         return $this->render('view', [
             'model' => $model,
             'usuario' => $reservaSala->getUsuario($model->idUsuario),
@@ -91,18 +91,18 @@ class ReservasalaController extends Controller
         $model = new Reservasala();
         $data = Yii::$app->request->post();
         $find = "";
-        
+
         if(!empty($data)) {
             $usuario = $data['Reservasala']['idUsuario'];
             $sala = $data['Reservasala']['idSala'];
             $periodo = $data['Reservasala']['periodo'];
-                        
+
             $periodoDecresc = date("Y-m-d H:i:s", strtotime('-1 hours', strtotime($periodo)));
             $periodoAcresc = date("Y-m-d H:i:s", strtotime('+1 hours', strtotime($periodo)));
-                        
+
             $find = Reservasala::find()->where('idSala = ' . $sala . ' AND periodo BETWEEN "' . $periodoDecresc . '" AND "' . $periodoAcresc . '"')->one();
         }
-        
+
         if (empty($find)) {
             if ($model->load($data)) {
                 $model->save();
@@ -135,7 +135,7 @@ class ReservasalaController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->save();
-            
+
             return $this->redirect(['view', 'idReservaSala' => $model->idReservaSala, 'idUsuario' => $model->idUsuario, 'idSala' => $model->idSala]);
         } else {
             return $this->render('update', [
